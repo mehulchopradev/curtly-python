@@ -33,15 +33,31 @@ It is odd
 Please enter ur choice : 4
 '''
 
+# import series
+from xyz.supercoders.lib.series import get_even_series, get_fiboseries as fiboseries
+import math
+import xyz.supercoders.lib.math
+
+def get_fiboseries(n):
+  return 'Bla Bla ' + str(n)
+
 while True:
-  print('1. Fibo Series\n2. Even Series\n3. Even or Odd\n4. Exit')
+  print('1. Fibo Series\n2. Even Series\n3. Even or Odd\n4. Factorial\n5. Exit')
   choice = int(input('Please enter ur choice : '))
+
+  if choice == 1 or choice == 2 or choice == 3 or choice == 4:
+    n = int(input('Enter n : '))
   
   if choice == 1:
-    pass
+    # fiboseries for n
+    print(fiboseries(n))
   elif choice == 2:
-    pass
+    # even series for n
+    print(get_even_series(n))
   elif choice == 3:
-    pass
+    # even or odd for n
+    print(xyz.supercoders.lib.math.evenOdd(n))
+  elif choice == 4:
+    print(math.factorial(n))
   else:
     break
