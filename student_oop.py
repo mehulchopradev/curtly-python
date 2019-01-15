@@ -1,13 +1,21 @@
 from xyz.supercoders.college.student import Student
 
-s1 = Student('mehul', 32, 'm', 90)
+print(Student.getcount()) # 0
+# class functions
+# Student.getcount()
+
+# list of str objects
+s1 = Student('mehul', 32, 'm', 90, ['987689768','98657890768'])
+name, marks = s1.get_name_marks()
+print('Name : ' + name)
+print('Marks : ' + str(marks))
 '''
 1. Memory will be reserved in the RAM - 4001
 2. Student.__init__(4001, 'mehul', 32, 'm', 90)
 '''
 
 
-s2 = Student('jane', 30, 'f', 40)
+s2 = Student('jane', 30, 'f', 40, '09876547896')
 '''
 1. Memory will be reserved in the RAM - 4003
 2. Student.__init__(4003)
@@ -15,6 +23,8 @@ s2 = Student('jane', 30, 'f', 40)
 
 #print(id(s1))
 #print(id(s2))
+
+print(Student.getcount())
 
 '''s1.name = 'mehul'
 s1.roll = 32
@@ -32,7 +42,7 @@ print(s1.roll)
 print(s2.roll)'''
 
 # bad
-s3 = Student('jill', 10, 'f', 90)
+s3 = Student('jill', 10, 'f', 69)
 
 # free to assign any more attributes
 s3.student_name = 'jill'
@@ -50,6 +60,21 @@ print(s2.roll)'''
 # print(s3.getdetails())
 # Student.getdetails(s3)
 
-print(s1.getgrade())
+'''print(s1.getgrade())
 print(s2.getgrade())
 
+print(Student.getcount())'''
+
+'''print(s1.getdetails())
+print(s2.getdetails())
+print(s3.getdetails())'''
+
+# list of Student objects
+slist = [s1, s2, s3]
+'''for student in slist:
+  print(student.getdetails())'''
+
+# filtering
+morethan40 = [student for student in slist if student.marks > 40]
+for s in morethan40:
+  print(s.getdetails())

@@ -1,6 +1,9 @@
 class Student:
 
-  def __init__(self, name, roll, gender, marks):
+  # class attributes
+  count = 0
+
+  def __init__(self, name, roll, gender, marks, mobilenos=[]):
     # constructor
     # configuring/adding attributes to the object
     self.name = name
@@ -8,9 +11,27 @@ class Student:
     self.gender = gender
     self.marks = marks
 
+    if isinstance(mobilenos, list):
+      self.mobilenos = mobilenos
+    else:
+      #TODO: Ideally should throw an error
+      self.mobilenos = []
+
+    Student.count += 1
+
+  # object methods
   def getdetails(self):
-    return 'Name : ' + self.name + '\nGender : ' + self.gender + '\nRoll : ' + str(self.roll) \
-    + '\nMarks : ' + str(self.marks)
+    str1 = 'Name : ' + self.name + '\nGender : ' + self.gender + '\nRoll : ' + str(self.roll) \
+    + '\nMarks : ' + str(self.marks) + '\n'
+
+    str2 = ''
+    if self.mobilenos:
+      for mobile in self.mobilenos:
+        str2 += mobile + '\n'
+    else:
+      str2 = 'No Contact Number'
+    
+    return str1 + str2
 
   def getgrade(self):
     marks = self.marks
@@ -24,3 +45,10 @@ class Student:
       return 'C'
     else:
       return 'F'
+
+  # class method
+  def getcount():
+    return Student.count
+
+  def get_name_marks(self):
+    return (self.name, self.marks)
