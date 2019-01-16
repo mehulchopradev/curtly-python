@@ -21,8 +21,14 @@ class Student:
 
   # object methods
   def getdetails(self):
-    str1 = 'Name : ' + self.name + '\nGender : ' + self.gender + '\nRoll : ' + str(self.roll) \
-    + '\nMarks : ' + str(self.marks) + '\n'
+    #str1 = 'Name : ' + self.name + '\nGender : ' + self.gender + '\nRoll : ' + str(self.roll) \
+    #+ '\nMarks : ' + str(self.marks) + '\n'
+
+    #str1 = 'Name : {0}\nGender : {1}\nRoll : {2}\nMarks : {3}\n'.format(self.name, self.gender, self.roll\
+    #  , self.marks)
+
+    str1 = 'Name : {name}\nGender: {gender}\nRoll: {roll}\nMarks: {marks}\n'.format(\
+      name=self.name, roll=self.roll, gender=self.gender, marks=self.marks)
 
     str2 = ''
     if self.mobilenos:

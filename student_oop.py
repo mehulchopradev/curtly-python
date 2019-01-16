@@ -71,10 +71,26 @@ print(s3.getdetails())'''
 
 # list of Student objects
 slist = [s1, s2, s3]
+smap = {32: s1, 30: s2, 10: s3}
 '''for student in slist:
   print(student.getdetails())'''
 
 # filtering
-morethan40 = [student for student in slist if student.marks > 40]
+'''morethan40 = [student for student in slist if student.marks > 40]
 for s in morethan40:
-  print(s.getdetails())
+  print(s.getdetails())'''
+
+roll = int(input('Enter roll : '))
+'''for student in slist:
+  if student.roll == roll:
+    print(student.getdetails())
+    break
+else:
+  # will execute if the corresponding for block is exhausted in its iteration of the sequence of elements
+  print('Student not found')'''
+
+if roll not in smap:
+  print('Student not found')
+else:
+  student = smap[roll]
+  print(student.getdetails())
