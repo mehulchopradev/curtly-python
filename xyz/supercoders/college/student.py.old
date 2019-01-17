@@ -7,8 +7,11 @@ class Student:
     # constructor
     # configuring/adding attributes to the object
     self.name = name
-    self.roll = roll
-    self.gender = gender
+    self.set_roll(roll)
+
+    # private (accessible only within the class Student)
+    self.set_gender(gender)
+
     self.marks = marks
 
     if isinstance(mobilenos, list):
@@ -19,31 +22,6 @@ class Student:
 
     Student.count += 1
 
-  # like the get_gender()
-  @property
-  def gender(self):
-    return self.__gender
-
-  @property
-  def roll(self):
-    return self.__roll
-
-  # like the set_gender()
-  @gender.setter
-  def gender(self, gender):
-    if gender == 'm' or gender == 'f':
-      self.__gender = gender
-    else:
-      # TODO: Rather throw an error
-      self.__gender = None
-
-  @roll.setter
-  def roll(self, roll):
-    if roll > 0:
-      self.__roll = roll
-    else:
-      self.__roll = None
-
   # object methods
   def getdetails(self):
     #str1 = 'Name : ' + self.name + '\nGender : ' + self.gender + '\nRoll : ' + str(self.roll) \
@@ -53,7 +31,7 @@ class Student:
     #  , self.marks)
 
     str1 = 'Name : {name}\nGender: {gender}\nRoll: {roll}\nMarks: {marks}\n'.format(\
-      name=self.name, roll=self.roll, gender=self.gender, marks=self.marks)
+      name=self.name, roll=self.__roll, gender=self.__gender, marks=self.marks)
 
     str2 = ''
     if self.mobilenos:
@@ -83,3 +61,21 @@ class Student:
 
   def get_name_marks(self):
     return (self.name, self.marks)
+
+  # public setter function
+  # encapsulation
+  def set_gender(self, gender):
+    if gender == 'm' or gender == 'f':
+      self.__gender = gender
+    else:
+      self.__gender = None
+
+  def set_roll(self, roll):
+    if roll > 0:
+      self.__roll = roll
+    else:
+      self.__roll = None
+
+  # public getter function
+  def get_gender(self):
+    return self.__gender
