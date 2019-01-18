@@ -1,4 +1,6 @@
-class Student:
+from xyz.supercoders.college.collegeuser import CollegeUser # parent class (super class)
+# Student -> CollegeUser -> object
+class Student(CollegeUser): # child class (sub class)
 
   # class attributes
   count = 0
@@ -6,36 +8,17 @@ class Student:
   def __init__(self, name, roll, gender, marks, mobilenos=[]):
     # constructor
     # configuring/adding attributes to the object
-    self.name = name
+    super().__init__(name, gender, mobilenos)
+    # CollegeUser.__init__(self, name, gender, mobilenos)
+
     self.roll = roll
-    self.gender = gender
     self.marks = marks
 
-    if isinstance(mobilenos, list):
-      self.mobilenos = mobilenos
-    else:
-      #TODO: Ideally should throw an error
-      self.mobilenos = []
-
     Student.count += 1
-
-  # like the get_gender()
-  @property
-  def gender(self):
-    return self.__gender
 
   @property
   def roll(self):
     return self.__roll
-
-  # like the set_gender()
-  @gender.setter
-  def gender(self, gender):
-    if gender == 'm' or gender == 'f':
-      self.__gender = gender
-    else:
-      # TODO: Rather throw an error
-      self.__gender = None
 
   @roll.setter
   def roll(self, roll):
@@ -44,8 +27,16 @@ class Student:
     else:
       self.__roll = None
 
-  # object methods
+  # method overriding
   def getdetails(self):
+    str1 = super().getdetails()
+
+    str2 = 'Roll: {0}\nMarks : {1}'.format(self.roll, self.marks)
+
+    return str1 + str2
+
+  # object methods
+  '''def getdetails(self):
     #str1 = 'Name : ' + self.name + '\nGender : ' + self.gender + '\nRoll : ' + str(self.roll) \
     #+ '\nMarks : ' + str(self.marks) + '\n'
 
@@ -62,7 +53,7 @@ class Student:
     else:
       str2 = 'No Contact Number'
     
-    return str1 + str2
+    return str1 + str2'''
 
   def getgrade(self):
     marks = self.marks
