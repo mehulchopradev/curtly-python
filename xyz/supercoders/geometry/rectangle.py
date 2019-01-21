@@ -5,8 +5,8 @@ class Rectangle(Shape):
     self.length = length
     self.breadth = breadth
 
-  def arearect(self):
+  def area(self):
     return self.length * self.breadth
 
-  def peri(self):
+  def perimeter(self):
     return 2 * (self.length + self.breadth)
